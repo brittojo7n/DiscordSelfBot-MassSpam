@@ -29,7 +29,7 @@ print(color.HEADER +
 print("                                          "+ color.UNDERLINE + "Made by Britto" + color.ENDC)
 channel = input(color.GREEN + 'Id of channel: ' + color.ENDC)
 mess = input(color.GREEN + "Message: " + color.ENDC)
-delay = float(input(color.GREEN + 'Delay: ') + color.ENDC)
+delay = float(input(color.GREEN + 'Delay: ' + color.ENDC))
 tokens = open("tokens.txt", "r").read().splitlines()
 status = "online"
 
