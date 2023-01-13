@@ -27,11 +27,20 @@ print(color.HEADER +
   "░██████╗██████╗░░█████╗░███╗░░░███╗███╗░░░███╗███████╗██████╗░\n██╔════╝██╔══██╗██╔══██╗████╗░████║████╗░████║██╔════╝██╔══██╗\n╚█████╗░██████╔╝███████║██╔████╔██║██╔████╔██║█████╗░░██████╔╝\n░╚═══██╗██╔═══╝░██╔══██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝░░██╔══██╗\n██████╔╝██║░░░░░██║░░██║██║░╚═╝░██║██║░╚═╝░██║███████╗██║░░██║\n╚═════╝░╚═╝░░░░░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚═╝"
 + color.ENDC)
 print("                                          "+ color.UNDERLINE + "Made by Britto" + color.ENDC)
-channel = input(color.GREEN + 'Id of channel: ' + color.ENDC)
-mess = input(color.GREEN + "Message: " + color.ENDC)
-delay = float(input(color.GREEN + 'Delay: ' + color.ENDC))
+
+channel = input(color.GREEN + 'Id of channel: ' + color.ENDC) 
+mess = input(color.GREEN + "Message: " + color.ENDC) 
+delay = input(color.GREEN + 'Delay: ' + color.ENDC)
 tokens = open("tokens.txt", "r").read().splitlines()
 status = "online"
+
+if channel == "":
+  channel = "1035411686460506132"
+if mess == "":  
+  mess = "owo"
+if delay == "":
+  delay = 0.001
+delay = float(delay)
 
 def spam(token, channel, mess):
   url = 'https://discord.com/api/v9/channels/' + channel + '/messages'
@@ -39,7 +48,7 @@ def spam(token, channel, mess):
   header = {"authorization": token}
   time.sleep(float(delay))
   r = requests.post(url, data=data, headers=header)
-  print(color.WARNING + r.status_code + color.ENDC)
+  print(color.WARNING + str(r.status_code) + color.ENDC)
 
 def onliner(token, status):
   ws = websocket.WebSocket()
