@@ -1,15 +1,22 @@
 from flask import Flask
 from threading import Thread
+import random
 
 app = Flask('')
 
+
 @app.route('/')
-def main():
-    return '<meta http-equiv="refresh" content="0; URL=https://dsc.gg/adns"/s>'
+def home():
+  return 'Im in!'
+
 
 def run():
-    app.run(host="0.0.0.0", port=8080)
+  app.run(host='0.0.0.0', port=random.randint(2000, 9000))
+
 
 def keep_alive():
-    server = Thread(target=run)
-    server.start()
+  '''
+	Creates and starts new thread that runs the function run.
+	'''
+  t = Thread(target=run)
+  t.start()
